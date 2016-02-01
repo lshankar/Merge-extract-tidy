@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title></title>
+
+<script type="text/javascript">
+window.onload = function() {
+  var imgs = document.getElementsByTagName('img'), i, img;
+  for (i = 0; i < imgs.length; i++) {
+    img = imgs[i];
+    // center an image if it is the only element of its parent
+    if (img.parentElement.childElementCount === 1)
+      img.parentElement.style.textAlign = 'center';
+  }
+};
+</script>
+
+<!-- Styles for R syntax highlighter -->
+<style type="text/css">
+   pre .operator,
+   pre .paren {
+     color: rgb(104, 118, 135)
+   }
+
+   pre .literal {
+     color: #990073
+   }
+
+   pre .number {
+     color: #099;
+   }
+
+   pre .comment {
+     color: #998;
+     font-style: italic
+   }
+
+   pre .keyword {
+     color: #900;
+     font-weight: bold
+   }
+
+   pre .identifier {
+     color: rgb(0, 0, 0);
+   }
+
+   pre .string {
+     color: #d14;
+   }
+</style>
+
+<!-- R syntax highlighter -->
+<script type="text/javascript">
+var hljs=new function(){function m(p){return p.replace(/&/gm,"&amp;").replace(/</gm,"&lt;")}function f(r,q,p){return RegExp(q,"m"+(r.cI?"i":"")+(p?"g":""))}function b(r){for(var p=0;p<r.childNodes.length;p++){var q=r.childNodes[p];if(q.nodeName=="CODE"){return q}if(!(q.nodeType==3&&q.nodeValue.match(/\s+/))){break}}}function h(t,s){var p="";for(var r=0;r<t.childNodes.length;r++){if(t.childNodes[r].nodeType==3){var q=t.childNodes[r].nodeValue;if(s){q=q.replace(/\n/g,"")}p+=q}else{if(t.childNodes[r].nodeName=="BR"){p+="\n"}else{p+=h(t.childNodes[r])}}}if(/MSIE [678]/.test(navigator.userAgent)){p=p.replace(/\r/g,"\n")}return p}function a(s){var r=s.className.split(/\s+/);r=r.concat(s.parentNode.className.split(/\s+/));for(var q=0;q<r.length;q++){var p=r[q].replace(/^language-/,"");if(e[p]){return p}}}function c(q){var p=[];(function(s,t){for(var r=0;r<s.childNodes.length;r++){if(s.childNodes[r].nodeType==3){t+=s.childNodes[r].nodeValue.length}else{if(s.childNodes[r].nodeName=="BR"){t+=1}else{if(s.childNodes[r].nodeType==1){p.push({event:"start",offset:t,node:s.childNodes[r]});t=arguments.callee(s.childNodes[r],t);p.push({event:"stop",offset:t,node:s.childNodes[r]})}}}}return t})(q,0);return p}function k(y,w,x){var q=0;var z="";var s=[];function u(){if(y.length&&w.length){if(y[0].offset!=w[0].offset){return(y[0].offset<w[0].offset)?y:w}else{return w[0].event=="start"?y:w}}else{return y.length?y:w}}function t(D){var A="<"+D.nodeName.toLowerCase();for(var B=0;B<D.attributes.length;B++){var C=D.attributes[B];A+=" "+C.nodeName.toLowerCase();if(C.value!==undefined&&C.value!==false&&C.value!==null){A+='="'+m(C.value)+'"'}}return A+">"}while(y.length||w.length){var v=u().splice(0,1)[0];z+=m(x.substr(q,v.offset-q));q=v.offset;if(v.event=="start"){z+=t(v.node);s.push(v.node)}else{if(v.event=="stop"){var p,r=s.length;do{r--;p=s[r];z+=("</"+p.nodeName.toLowerCase()+">")}while(p!=v.node);s.splice(r,1);while(r<s.length){z+=t(s[r]);r++}}}}return z+m(x.substr(q))}function j(){function q(x,y,v){if(x.compiled){return}var u;var s=[];if(x.k){x.lR=f(y,x.l||hljs.IR,true);for(var w in x.k){if(!x.k.hasOwnProperty(w)){continue}if(x.k[w] instanceof Object){u=x.k[w]}else{u=x.k;w="keyword"}for(var r in u){if(!u.hasOwnProperty(r)){continue}x.k[r]=[w,u[r]];s.push(r)}}}if(!v){if(x.bWK){x.b="\\b("+s.join("|")+")\\s"}x.bR=f(y,x.b?x.b:"\\B|\\b");if(!x.e&&!x.eW){x.e="\\B|\\b"}if(x.e){x.eR=f(y,x.e)}}if(x.i){x.iR=f(y,x.i)}if(x.r===undefined){x.r=1}if(!x.c){x.c=[]}x.compiled=true;for(var t=0;t<x.c.length;t++){if(x.c[t]=="self"){x.c[t]=x}q(x.c[t],y,false)}if(x.starts){q(x.starts,y,false)}}for(var p in e){if(!e.hasOwnProperty(p)){continue}q(e[p].dM,e[p],true)}}function d(B,C){if(!j.called){j();j.called=true}function q(r,M){for(var L=0;L<M.c.length;L++){if((M.c[L].bR.exec(r)||[null])[0]==r){return M.c[L]}}}function v(L,r){if(D[L].e&&D[L].eR.test(r)){return 1}if(D[L].eW){var M=v(L-1,r);return M?M+1:0}return 0}function w(r,L){return L.i&&L.iR.test(r)}function K(N,O){var M=[];for(var L=0;L<N.c.length;L++){M.push(N.c[L].b)}var r=D.length-1;do{if(D[r].e){M.push(D[r].e)}r--}while(D[r+1].eW);if(N.i){M.push(N.i)}return f(O,M.join("|"),true)}function p(M,L){var N=D[D.length-1];if(!N.t){N.t=K(N,E)}N.t.lastIndex=L;var r=N.t.exec(M);return r?[M.substr(L,r.index-L),r[0],false]:[M.substr(L),"",true]}function z(N,r){var L=E.cI?r[0].toLowerCase():r[0];var M=N.k[L];if(M&&M instanceof Array){return M}return false}function F(L,P){L=m(L);if(!P.k){return L}var r="";var O=0;P.lR.lastIndex=0;var M=P.lR.exec(L);while(M){r+=L.substr(O,M.index-O);var N=z(P,M);if(N){x+=N[1];r+='<span class="'+N[0]+'">'+M[0]+"</span>"}else{r+=M[0]}O=P.lR.lastIndex;M=P.lR.exec(L)}return r+L.substr(O,L.length-O)}function J(L,M){if(M.sL&&e[M.sL]){var r=d(M.sL,L);x+=r.keyword_count;return r.value}else{return F(L,M)}}function I(M,r){var L=M.cN?'<span class="'+M.cN+'">':"";if(M.rB){y+=L;M.buffer=""}else{if(M.eB){y+=m(r)+L;M.buffer=""}else{y+=L;M.buffer=r}}D.push(M);A+=M.r}function G(N,M,Q){var R=D[D.length-1];if(Q){y+=J(R.buffer+N,R);return false}var P=q(M,R);if(P){y+=J(R.buffer+N,R);I(P,M);return P.rB}var L=v(D.length-1,M);if(L){var O=R.cN?"</span>":"";if(R.rE){y+=J(R.buffer+N,R)+O}else{if(R.eE){y+=J(R.buffer+N,R)+O+m(M)}else{y+=J(R.buffer+N+M,R)+O}}while(L>1){O=D[D.length-2].cN?"</span>":"";y+=O;L--;D.length--}var r=D[D.length-1];D.length--;D[D.length-1].buffer="";if(r.starts){I(r.starts,"")}return R.rE}if(w(M,R)){throw"Illegal"}}var E=e[B];var D=[E.dM];var A=0;var x=0;var y="";try{var s,u=0;E.dM.buffer="";do{s=p(C,u);var t=G(s[0],s[1],s[2]);u+=s[0].length;if(!t){u+=s[1].length}}while(!s[2]);if(D.length>1){throw"Illegal"}return{r:A,keyword_count:x,value:y}}catch(H){if(H=="Illegal"){return{r:0,keyword_count:0,value:m(C)}}else{throw H}}}function g(t){var p={keyword_count:0,r:0,value:m(t)};var r=p;for(var q in e){if(!e.hasOwnProperty(q)){continue}var s=d(q,t);s.language=q;if(s.keyword_count+s.r>r.keyword_count+r.r){r=s}if(s.keyword_count+s.r>p.keyword_count+p.r){r=p;p=s}}if(r.language){p.second_best=r}return p}function i(r,q,p){if(q){r=r.replace(/^((<[^>]+>|\t)+)/gm,function(t,w,v,u){return w.replace(/\t/g,q)})}if(p){r=r.replace(/\n/g,"<br>")}return r}function n(t,w,r){var x=h(t,r);var v=a(t);var y,s;if(v){y=d(v,x)}else{return}var q=c(t);if(q.length){s=document.createElement("pre");s.innerHTML=y.value;y.value=k(q,c(s),x)}y.value=i(y.value,w,r);var u=t.className;if(!u.match("(\\s|^)(language-)?"+v+"(\\s|$)")){u=u?(u+" "+v):v}if(/MSIE [678]/.test(navigator.userAgent)&&t.tagName=="CODE"&&t.parentNode.tagName=="PRE"){s=t.parentNode;var p=document.createElement("div");p.innerHTML="<pre><code>"+y.value+"</code></pre>";t=p.firstChild.firstChild;p.firstChild.cN=s.cN;s.parentNode.replaceChild(p.firstChild,s)}else{t.innerHTML=y.value}t.className=u;t.result={language:v,kw:y.keyword_count,re:y.r};if(y.second_best){t.second_best={language:y.second_best.language,kw:y.second_best.keyword_count,re:y.second_best.r}}}function o(){if(o.called){return}o.called=true;var r=document.getElementsByTagName("pre");for(var p=0;p<r.length;p++){var q=b(r[p]);if(q){n(q,hljs.tabReplace)}}}function l(){if(window.addEventListener){window.addEventListener("DOMContentLoaded",o,false);window.addEventListener("load",o,false)}else{if(window.attachEvent){window.attachEvent("onload",o)}else{window.onload=o}}}var e={};this.LANGUAGES=e;this.highlight=d;this.highlightAuto=g;this.fixMarkup=i;this.highlightBlock=n;this.initHighlighting=o;this.initHighlightingOnLoad=l;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="\\b(0[xX][a-fA-F0-9]+|(\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)";this.BNR="\\b(0b[01]+)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.ER="(?![\\s\\S])";this.BE={b:"\\\\.",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.BNM={cN:"number",b:this.BNR,r:0};this.inherit=function(r,s){var p={};for(var q in r){p[q]=r[q]}if(s){for(var q in s){p[q]=s[q]}}return p}}();hljs.LANGUAGES.cpp=function(){var a={keyword:{"false":1,"int":1,"float":1,"while":1,"private":1,"char":1,"catch":1,"export":1,virtual:1,operator:2,sizeof:2,dynamic_cast:2,typedef:2,const_cast:2,"const":1,struct:1,"for":1,static_cast:2,union:1,namespace:1,unsigned:1,"long":1,"throw":1,"volatile":2,"static":1,"protected":1,bool:1,template:1,mutable:1,"if":1,"public":1,friend:2,"do":1,"return":1,"goto":1,auto:1,"void":2,"enum":1,"else":1,"break":1,"new":1,extern:1,using:1,"true":1,"class":1,asm:1,"case":1,typeid:1,"short":1,reinterpret_cast:2,"default":1,"double":1,register:1,explicit:1,signed:1,typename:1,"try":1,"this":1,"switch":1,"continue":1,wchar_t:1,inline:1,"delete":1,alignof:1,char16_t:1,char32_t:1,constexpr:1,decltype:1,noexcept:1,nullptr:1,static_assert:1,thread_local:1,restrict:1,_Bool:1,complex:1},built_in:{std:1,string:1,cin:1,cout:1,cerr:1,clog:1,stringstream:1,istringstream:1,ostringstream:1,auto_ptr:1,deque:1,list:1,queue:1,stack:1,vector:1,map:1,set:1,bitset:1,multiset:1,multimap:1,unordered_set:1,unordered_map:1,unordered_multiset:1,unordered_multimap:1,array:1,shared_ptr:1}};return{dM:{k:a,i:"</",c:[hljs.CLCM,hljs.CBLCLM,hljs.QSM,{cN:"string",b:"'\\\\?.",e:"'",i:"."},{cN:"number",b:"\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)"},hljs.CNM,{cN:"preprocessor",b:"#",e:"$"},{cN:"stl_container",b:"\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<",e:">",k:a,r:10,c:["self"]}]}}}();hljs.LANGUAGES.r={dM:{c:[hljs.HCM,{cN:"number",b:"\\b0[xX][0-9a-fA-F]+[Li]?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+(?:[eE][+\\-]?\\d*)?L\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+\\.(?!\\d)(?:i\\b)?",e:hljs.IMMEDIATE_RE,r:1},{cN:"number",b:"\\b\\d+(?:\\.\\d*)?(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\.\\d+(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"keyword",b:"(?:tryCatch|library|setGeneric|setGroupGeneric)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\.",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\d+(?![\\w.])",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\b(?:function)",e:hljs.IMMEDIATE_RE,r:2},{cN:"keyword",b:"(?:if|in|break|next|repeat|else|for|return|switch|while|try|stop|warning|require|attach|detach|source|setMethod|setClass)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"literal",b:"(?:NA|NA_integer_|NA_real_|NA_character_|NA_complex_)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"literal",b:"(?:NULL|TRUE|FALSE|T|F|Inf|NaN)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"identifier",b:"[a-zA-Z.][a-zA-Z0-9._]*\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"<\\-(?!\\s*\\d)",e:hljs.IMMEDIATE_RE,r:2},{cN:"operator",b:"\\->|<\\-",e:hljs.IMMEDIATE_RE,r:1},{cN:"operator",b:"%%|~",e:hljs.IMMEDIATE_RE},{cN:"operator",b:">=|<=|==|!=|\\|\\||&&|=|\\+|\\-|\\*|/|\\^|>|<|!|&|\\||\\$|:",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"%",e:"%",i:"\\n",r:1},{cN:"identifier",b:"`",e:"`",r:0},{cN:"string",b:'"',e:'"',c:[hljs.BE],r:0},{cN:"string",b:"'",e:"'",c:[hljs.BE],r:0},{cN:"paren",b:"[[({\\])}]",e:hljs.IMMEDIATE_RE,r:0}]}};
+hljs.initHighlightingOnLoad();
+</script>
+
+
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 13px;
+}
+
+body {
+  max-width: 800px;
+  margin: auto;
+  padding: 1em;
+  line-height: 20px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 {
+   font-size:2.2em;
+}
+
+h2 {
+   font-size:1.8em;
+}
+
+h3 {
+   font-size:1.4em;
+}
+
+h4 {
+   font-size:1.0em;
+}
+
+h5 {
+   font-size:0.9em;
+}
+
+h6 {
+   font-size:0.8em;
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre, img {
+  max-width: 100%;
+}
+pre {
+  overflow-x: auto;
+}
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code {
+  font-size: 92%;
+  border: 1px solid #ccc;
+}
+
+code[class] {
+  background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * {
+      background: transparent !important;
+      color: black !important;
+      filter:none !important;
+      -ms-filter: none !important;
+   }
+
+   body {
+      font-size:12pt;
+      max-width:100%;
+   }
+
+   a, a:visited {
+      text-decoration: underline;
+   }
+
+   hr {
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote {
+      padding-right: 1em;
+      page-break-inside: avoid;
+   }
+
+   tr, img {
+      page-break-inside: avoid;
+   }
+
+   img {
+      max-width: 100% !important;
+   }
+
+   @page :left {
+      margin: 15mm 20mm 15mm 10mm;
+   }
+
+   @page :right {
+      margin: 15mm 10mm 15mm 20mm;
+   }
+
+   p, h2, h3 {
+      orphans: 3; widows: 3;
+   }
+
+   h2, h3 {
+      page-break-after: avoid;
+   }
+}
+</style>
+
+
+
+</head>
+
+<body>
+<h1></h1>
+
+<p>##Variable and descriptions
+###Subject
+The experiments have been carried out with a group of 30 volunteers within an age bracket of 19-48 years. </p>
+
+<table><thead>
+<tr>
+<th>Variable name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>subject</td>
+<td>ID of the 30 volunteers  who performed the activity. Its range is from 1 to 30.</td>
+</tr>
+</tbody></table>
+
+<p>###Activity
+Each person performed six activities (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING) wearing a smartphone (Samsung Galaxy S II) on the waist.</p>
+
+<table><thead>
+<tr>
+<th>Variable name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>activity</td>
+<td>Activity_ID and Activity performed are here.</td>
+</tr>
+<tr>
+<td></td>
+<td>It has 6 activities:</td>
+</tr>
+<tr>
+<td></td>
+<td>1. WALKING</td>
+</tr>
+<tr>
+<td></td>
+<td>2. WALKING_UPSTAIRS</td>
+</tr>
+<tr>
+<td></td>
+<td>3. WALKING_DOWNSTAIRS</td>
+</tr>
+<tr>
+<td></td>
+<td>4. SITTING</td>
+</tr>
+<tr>
+<td></td>
+<td>5. STANDING</td>
+</tr>
+<tr>
+<td></td>
+<td>6. LAYING</td>
+</tr>
+</tbody></table>
+
+<p>###Features taken for the project notes
+Using its embedded accelerometer and gyroscope, 3-axial linear acceleration and 3-axial angular velocity at a constant rate of 50Hz are captured. The experiments have been video-recorded to label the data manually. The obtained dataset has been randomly partitioned into two sets, where 70% of the volunteers was selected for generating the training data and 30% the test data. </p>
+
+<p>The sensor signals (accelerometer and gyroscope) were pre-processed by applying noise filters and then sampled in fixed-width sliding windows of 2.56 sec and 50% overlap (128 readings/window). The sensor acceleration signal, which has gravitational and body motion components, was separated using a Butterworth low-pass filter into body acceleration and gravity. The gravitational force is assumed to have only low frequency components, therefore a filter with 0.3 Hz cutoff frequency was used. From each window, a vector of features was obtained by calculating variables from the time and frequency domain. </p>
+
+<p>The features selected for this database come from the accelerometer and gyroscope 3-axial raw signals 
+timeAccelerometer a-XYZ and timeGyroscope-XYZ. These time domain signals were captured at a constant rate of 50 Hz. Then they were filtered using a median filter and a 3rd order low pass Butterworth filter with a corner frequency of 20 Hz to remove noise. Similarly, the acceleration signal was then separated into body and gravity acceleration signals (timeBodyacceleration-XYZ and timeGravityAcceleration-XYZ) using another low pass Butterworth filter with a corner frequency of 0.3 Hz. </p>
+
+<p>Subsequently, the body linear acceleration and angular velocity were derived in time to obtain Jerk signals (timeBodyAccelerationJerk-XYZ and timeBodyGyroscopeJerk-XYZ). Also the magnitude of these three-dimensional signals were calculated using the Euclidean norm (timeBodyAccelerationMagnitude, timeGravityAccelerationMagnitude, timeBodyAccelerationJerkMagnitude, timeBodyGyroscopeMagnitude, timeBodyGyroscopeJerkMagnitude). </p>
+
+<p>Finally a Fast Fourier Transform (FFT) was applied to some of these signals producing fBodyAcceleration-XYZ, frequencyBodyAccelerationJerk-XYZ, frequencyBodyGyro-XYZ, frequencyBodyAccelerationJerkMagnitude, frequencyBodyGyroMagnitude, frequencyBodyGyroJerkMagnitude. </p>
+
+<p>These signals were used to estimate variables of the feature vector for each pattern:<br/>
+&#39;-XYZ&#39; is used to denote 3-axial signals in the X, Y and Z directions.</p>
+
+<ul>
+<li>timeBodyAccelerometer-XYZ</li>
+<li>timeGravityAccelerometer-XYZ</li>
+<li>timeBodyAccelerometerJerk-XYZ</li>
+<li>timeBodyGyroscope-XYZ</li>
+<li>timeBodyGyroscopeJerk-XYZ</li>
+<li>timeBodyAccelerometerMagnitude</li>
+<li>timeGravityAccelerometerMagnitude</li>
+<li>timeBodyAccelerometerJerkMagnitude</li>
+<li>timeBodyGyroscopeMagnitude</li>
+<li>timeBodyGyroscopeJerkMagnitude</li>
+<li>frequencyBodyAccelerometer-XYZ</li>
+<li>frequencyBodyAccelerometerJerk-XYZ</li>
+<li>frequencyBodyGyroscope-XYZ</li>
+<li>frequencyBodyAccelerometerMagnitude</li>
+<li>frequencyBodyAccelerometerJerkMagnitude</li>
+<li>frequencyBodyGyroscopeMagnitude</li>
+<li>frequencyBodyGyroscopeJerkMagnitude</li>
+</ul>
+
+<p>The set of variables that were estimated from these signals are: </p>
+
+<ul>
+<li>mean(): Mean value</li>
+<li>std(): Standard deviation</li>
+</ul>
+
+<h2><strong>68  variable names in the dataset:</strong>          </h2>
+
+<ul>
+<li>timeBodyAccelerometer-mean()-X<br/></li>
+<li>timeBodyAccelerometer-mean()-Y<br/></li>
+<li>timeBodyAccelerometer-mean()-Z<br/></li>
+<li>timeBodyAccelerometer-std()-X<br/></li>
+<li>timeBodyAccelerometer-std()-Y</li>
+<li>timeBodyAccelerometer-std()-Z</li>
+<li>timeGravityAccelerometer-mean()-X</li>
+<li>timeGravityAccelerometer-mean()-Y</li>
+<li>timeGravityAccelerometer-mean()-Z</li>
+<li>timeGravityAccelerometer-std()-X</li>
+<li>timeGravityAccelerometer-std()-Y</li>
+<li>timeGravityAccelerometer-std()-Z</li>
+<li>timeBodyAccelerometerJerk-mean()-X</li>
+<li>timeBodyAccelerometerJerk-mean()-Y</li>
+<li>timeBodyAccelerometerJerk-mean()-Z</li>
+<li>timeBodyAccelerometerJerk-std()-X</li>
+<li>timeBodyAccelerometerJerk-std()-Y</li>
+<li>timeBodyAccelerometerJerk-std()-Z</li>
+<li>timeBodyGyroscope-mean()-X</li>
+<li>timeBodyGyroscope-mean()-Y</li>
+<li>timeBodyGyroscope-mean()-Z</li>
+<li>timeBodyGyroscope-std()-X</li>
+<li>timeBodyGyroscope-std()-Y</li>
+<li>timeBodyGyroscope-std()-Z</li>
+<li>timeBodyGyroscopeJerk-mean()-X</li>
+<li>timeBodyGyroscopeJerk-mean()-Y</li>
+<li>timeBodyGyroscopeJerk-mean()-Z</li>
+<li>timeBodyGyroscopeJerk-std()-X</li>
+<li>timeBodyGyroscopeJerk-std()-Y</li>
+<li>timeBodyGyroscopeJerk-std()-Z</li>
+<li>timeBodyAccelerometerMagnitude-mean()</li>
+<li>timeBodyAccelerometerMagnitude-std()</li>
+<li>timeGravityAccelerometerMagnitude-mean()</li>
+<li>timeGravityAccelerometerMagnitude-std()</li>
+<li>timeBodyAccelerometerJerkMagnitude-mean()</li>
+<li>timeBodyAccelerometerJerkMagnitude-std()</li>
+<li>timeBodyGyroscopeMagnitude-mean()</li>
+<li>timeBodyGyroscopeMagnitude-std()</li>
+<li>timeBodyGyroscopeJerkMagnitude-mean()</li>
+<li>timeBodyGyroscopeJerkMagnitude-std()</li>
+<li>frequencyBodyAccelerometer-mean()-X</li>
+<li>frequencyBodyAccelerometer-mean()-Y</li>
+<li>frequencyBodyAccelerometer-mean()-Z</li>
+<li>frequencyBodyAccelerometer-std()-X</li>
+<li>frequencyBodyAccelerometer-std()-Y</li>
+<li>frequencyBodyAccelerometer-std()-Z</li>
+<li>frequencyBodyAccelerometerJerk-mean()-X</li>
+<li>frequencyBodyAccelerometerJerk-mean()-Y</li>
+<li>frequencyBodyAccelerometerJerk-mean()-Z</li>
+<li>frequencyBodyAccelerometerJerk-std()-X</li>
+<li>frequencyBodyAccelerometerJerk-std()-Y</li>
+<li>frequencyBodyAccelerometerJerk-std()-Z</li>
+<li>frequencyBodyGyroscope-mean()-X</li>
+<li>frequencyBodyGyroscope-mean()-Y</li>
+<li>frequencyBodyGyroscope-mean()-Z</li>
+<li>frequencyBodyGyroscope-std()-X</li>
+<li>frequencyBodyGyroscope-std()-Y</li>
+<li>frequencyBodyGyroscope-std()-Z</li>
+<li>frequencyBodyAccelerometerMagnitude-mean()</li>
+<li>frequencyBodyAccelerometerMagnitude-std()</li>
+<li>frequencyBodyAccelerometerJerkMagnitude-mean()</li>
+<li>frequencyBodyAccelerometerJerkMagnitude-std()</li>
+<li>frequencyBodyGyroscopeMagnitude-mean()</li>
+<li>frequencyBodyGyroscopeMagnitude-std()</li>
+<li>frequencyBodyGyroscopeJerkMagnitude-mean()</li>
+<li>frequencyBodyGyroscopeJerkMagnitude-std()</li>
+</ul>
+
+<p><code>Note</code>: Features are normalized and bounded within [-1,1]</p>
+
+<h2>##Dataset structure</h2>
+
+<pre><code class="r">str(alldata)
+</code></pre>
+
+<pre><code>## &#39;data.frame&#39;:    10299 obs. of  68 variables:
+##  $ activity_name            : chr  &quot;WALKING&quot; &quot;WALKING&quot; &quot;WALKING&quot; &quot;WALKING&quot; ...
+##  $ subject_id               : int  26 29 29 29 29 29 29 29 29 29 ...
+##  $ tbodyacc_mean_x          : num  0.231 0.331 0.376 0.233 0.236 ...
+##  $ tbodyacc_mean_y          : num  -0.0177 -0.0185 -0.0247 -0.0345 -0.0144 ...
+##  $ tbodyacc_mean_z          : num  -0.122 -0.17 -0.157 -0.105 -0.124 ...
+##  $ tbodyacc_std_x           : num  -0.419 -0.145 -0.107 -0.175 -0.21 ...
+##  $ tbodyacc_std_y           : num  -0.13923 -0.09825 0.06609 0.00431 -0.07492 ...
+##  $ tbodyacc_std_z           : num  -0.3862 -0.0239 -0.1973 -0.3154 -0.247 ...
+##  $ tgravityacc_mean_x       : num  0.965 0.962 0.966 0.965 0.962 ...
+##  $ tgravityacc_mean_y       : num  -0.128 -0.12 -0.126 -0.124 -0.119 ...
+##  $ tgravityacc_mean_z       : num  0.1084 0.1275 0.0901 0.06 0.0665 ...
+##  $ tgravityacc_std_x        : num  -0.99 -0.972 -0.98 -0.977 -0.982 ...
+##  $ tgravityacc_std_y        : num  -0.966 -0.977 -0.976 -0.969 -0.992 ...
+##  $ tgravityacc_std_z        : num  -0.974 -0.779 -0.745 -0.949 -0.959 ...
+##  $ tbodyaccjerk_mean_x      : num  0.125 0.592 -0.229 -0.378 0.1 ...
+##  $ tbodyaccjerk_mean_y      : num  0.1408 -0.4805 -0.0903 0.3786 0.2861 ...
+##  $ tbodyaccjerk_mean_z      : num  -0.07855 -0.39695 -0.12248 -0.00329 0.08219 ...
+##  $ tbodyaccjerk_std_x       : num  -0.366 -0.245 -0.161 -0.173 -0.25 ...
+##  $ tbodyaccjerk_std_y       : num  -0.2991 -0.072 0.1138 -0.0594 -0.1168 ...
+##  $ tbodyaccjerk_std_z       : num  -0.444 -0.446 -0.425 -0.545 -0.38 ...
+##  $ tbodygyro_mean_x         : num  -0.01634 0.3863 0.14997 0.04616 0.00533 ...
+##  $ tbodygyro_mean_y         : num  -0.0877 -0.3113 -0.1156 -0.1686 -0.1671 ...
+##  $ tbodygyro_mean_z         : num  0.0696 -0.0494 0.109 0.1143 0.088 ...
+##  $ tbodygyro_std_x          : num  -0.434 -0.482 -0.505 -0.578 -0.57 ...
+##  $ tbodygyro_std_y          : num  -0.615 -0.201 -0.129 -0.117 -0.158 ...
+##  $ tbodygyro_std_z          : num  -0.378 -0.486 -0.415 -0.481 -0.5 ...
+##  $ tbodygyrojerk_mean_x     : num  -0.0311 -0.2558 -0.1685 0.0347 -0.1382 ...
+##  $ tbodygyrojerk_mean_y     : num  -0.0929 0.2189 -0.2103 -0.3449 0.2167 ...
+##  $ tbodygyrojerk_mean_z     : num  0.1915 0.1463 0.0524 -0.3041 0.0664 ...
+##  $ tbodygyrojerk_std_x      : num  -0.416 -0.354 -0.292 -0.339 -0.363 ...
+##  $ tbodygyrojerk_std_y      : num  -0.61 -0.624 -0.539 -0.547 -0.601 ...
+##  $ tbodygyrojerk_std_z      : num  -0.523 -0.547 -0.457 -0.518 -0.514 ...
+##  $ tbodyaccmag_mean         : num  -0.2881 -0.0307 -0.0144 -0.0958 -0.1301 ...
+##  $ tbodyaccmag_std          : num  -0.471 -0.207 -0.156 -0.234 -0.235 ...
+##  $ tgravityaccmag_mean      : num  -0.2881 -0.0307 -0.0144 -0.0958 -0.1301 ...
+##  $ tgravityaccmag_std       : num  -0.471 -0.207 -0.156 -0.234 -0.235 ...
+##  $ tbodyaccjerkmag_mean     : num  -0.352 -0.243 -0.15 -0.231 -0.254 ...
+##  $ tbodyaccjerkmag_std      : num  -0.2851 -0.1386 -0.0239 -0.1252 -0.1001 ...
+##  $ tbodygyromag_mean        : num  -0.385 -0.119 -0.19 -0.236 -0.27 ...
+##  $ tbodygyromag_std         : num  -0.527 -0.393 -0.337 -0.374 -0.369 ...
+##  $ tbodygyrojerkmag_mean    : num  -0.531 -0.525 -0.444 -0.479 -0.511 ...
+##  $ tbodygyrojerkmag_std     : num  -0.626 -0.617 -0.554 -0.555 -0.605 ...
+##  $ fbodyacc_mean_x          : num  -0.4329 -0.0664 -0.049 -0.0588 -0.1886 ...
+##  $ fbodyacc_mean_y          : num  -0.1631 -0.0809 0.1273 0.0331 -0.0201 ...
+##  $ fbodyacc_mean_z          : num  -0.41 -0.12 -0.225 -0.357 -0.244 ...
+##  $ fbodyacc_std_x           : num  -0.414 -0.178 -0.13 -0.225 -0.218 ...
+##  $ fbodyacc_std_y           : num  -0.1808 -0.1647 -0.0362 -0.0752 -0.1645 ...
+##  $ fbodyacc_std_z           : num  -0.422 -0.048 -0.246 -0.346 -0.31 ...
+##  $ fbodyaccjerk_mean_x      : num  -0.449 -0.232 -0.132 -0.127 -0.231 ...
+##  $ fbodyaccjerk_mean_y      : num  -0.33194 -0.00336 0.05972 -0.02074 -0.10515 ...
+##  $ fbodyaccjerk_mean_z      : num  -0.5 -0.363 -0.359 -0.474 -0.294 ...
+##  $ fbodyaccjerk_std_x       : num  -0.339 -0.329 -0.275 -0.308 -0.343 ...
+##  $ fbodyaccjerk_std_y       : num  -0.3098 -0.2372 0.0988 -0.1804 -0.1966 ...
+##  $ fbodyaccjerk_std_z       : num  -0.397 -0.531 -0.49 -0.62 -0.466 ...
+##  $ fbodygyro_mean_x         : num  -0.336 -0.292 -0.342 -0.416 -0.42 ...
+##  $ fbodygyro_mean_y         : num  -0.598 -0.375 -0.306 -0.239 -0.341 ...
+##  $ fbodygyro_mean_z         : num  -0.294 -0.434 -0.357 -0.4 -0.434 ...
+##  $ fbodygyro_std_x          : num  -0.466 -0.543 -0.557 -0.63 -0.619 ...
+##  $ fbodygyro_std_y          : num  -0.6292 -0.1158 -0.042 -0.0561 -0.0687 ...
+##  $ fbodygyro_std_z          : num  -0.465 -0.551 -0.489 -0.558 -0.569 ...
+##  $ fbodyaccmag_mean         : num  -0.439 -0.196 -0.133 -0.213 -0.24 ...
+##  $ fbodyaccmag_std          : num  -0.572 -0.337 -0.301 -0.365 -0.351 ...
+##  $ fbodybodyaccjerkmag_mean : num  -0.3528 -0.0788 -0.0322 -0.1166 -0.0572 ...
+##  $ fbodybodyaccjerkmag_std  : num  -0.2091 -0.2221 -0.0186 -0.1418 -0.1578 ...
+##  $ fbodybodygyromag_mean    : num  -0.553 -0.427 -0.359 -0.413 -0.416 ...
+##  $ fbodybodygyromag_std     : num  -0.59 -0.473 -0.436 -0.454 -0.445 ...
+##  $ fbodybodygyrojerkmag_mean: num  -0.651 -0.622 -0.586 -0.57 -0.655 ...
+##  $ fbodybodygyrojerkmag_std : num  -0.619 -0.638 -0.543 -0.565 -0.573 ...
+</code></pre>
+
+<h2>##Dataset summary</h2>
+
+<pre><code class="r">summary(alldata)
+</code></pre>
+
+<pre><code>##  activity_name        subject_id    tbodyacc_mean_x   tbodyacc_mean_y   
+##  Length:10299       Min.   : 1.00   Min.   :-1.0000   Min.   :-1.00000  
+##  Class :character   1st Qu.: 9.00   1st Qu.: 0.2626   1st Qu.:-0.02490  
+##  Mode  :character   Median :17.00   Median : 0.2772   Median :-0.01716  
+##                     Mean   :16.15   Mean   : 0.2743   Mean   :-0.01774  
+##                     3rd Qu.:24.00   3rd Qu.: 0.2884   3rd Qu.:-0.01062  
+##                     Max.   :30.00   Max.   : 1.0000   Max.   : 1.00000  
+##  tbodyacc_mean_z    tbodyacc_std_x    tbodyacc_std_y     tbodyacc_std_z   
+##  Min.   :-1.00000   Min.   :-1.0000   Min.   :-1.00000   Min.   :-1.0000  
+##  1st Qu.:-0.12102   1st Qu.:-0.9924   1st Qu.:-0.97699   1st Qu.:-0.9791  
+##  Median :-0.10860   Median :-0.9430   Median :-0.83503   Median :-0.8508  
+##  Mean   :-0.10892   Mean   :-0.6078   Mean   :-0.51019   Mean   :-0.6131  
+##  3rd Qu.:-0.09759   3rd Qu.:-0.2503   3rd Qu.:-0.05734   3rd Qu.:-0.2787  
+##  Max.   : 1.00000   Max.   : 1.0000   Max.   : 1.00000   Max.   : 1.0000  
+##  tgravityacc_mean_x tgravityacc_mean_y  tgravityacc_mean_z
+##  Min.   :-1.0000    Min.   :-1.000000   Min.   :-1.00000  
+##  1st Qu.: 0.8117    1st Qu.:-0.242943   1st Qu.:-0.11671  
+##  Median : 0.9218    Median :-0.143551   Median : 0.03680  
+##  Mean   : 0.6692    Mean   : 0.004039   Mean   : 0.09215  
+##  3rd Qu.: 0.9547    3rd Qu.: 0.118905   3rd Qu.: 0.21621  
+##  Max.   : 1.0000    Max.   : 1.000000   Max.   : 1.00000  
+##  tgravityacc_std_x tgravityacc_std_y tgravityacc_std_z tbodyaccjerk_mean_x
+##  Min.   :-1.0000   Min.   :-1.0000   Min.   :-1.0000   Min.   :-1.00000   
+##  1st Qu.:-0.9949   1st Qu.:-0.9913   1st Qu.:-0.9866   1st Qu.: 0.06298   
+##  Median :-0.9819   Median :-0.9759   Median :-0.9665   Median : 0.07597   
+##  Mean   :-0.9652   Mean   :-0.9544   Mean   :-0.9389   Mean   : 0.07894   
+##  3rd Qu.:-0.9615   3rd Qu.:-0.9464   3rd Qu.:-0.9296   3rd Qu.: 0.09131   
+##  Max.   : 1.0000   Max.   : 1.0000   Max.   : 1.0000   Max.   : 1.00000   
+##  tbodyaccjerk_mean_y tbodyaccjerk_mean_z tbodyaccjerk_std_x
+##  Min.   :-1.000000   Min.   :-1.000000   Min.   :-1.0000   
+##  1st Qu.:-0.018555   1st Qu.:-0.031552   1st Qu.:-0.9913   
+##  Median : 0.010753   Median :-0.001159   Median :-0.9513   
+##  Mean   : 0.007948   Mean   :-0.004675   Mean   :-0.6398   
+##  3rd Qu.: 0.033538   3rd Qu.: 0.024578   3rd Qu.:-0.2912   
+##  Max.   : 1.000000   Max.   : 1.000000   Max.   : 1.0000   
+##  tbodyaccjerk_std_y tbodyaccjerk_std_z tbodygyro_mean_x  
+##  Min.   :-1.0000    Min.   :-1.0000    Min.   :-1.00000  
+##  1st Qu.:-0.9850    1st Qu.:-0.9892    1st Qu.:-0.04579  
+##  Median :-0.9250    Median :-0.9543    Median :-0.02776  
+##  Mean   :-0.6080    Mean   :-0.7628    Mean   :-0.03098  
+##  3rd Qu.:-0.2218    3rd Qu.:-0.5485    3rd Qu.:-0.01058  
+##  Max.   : 1.0000    Max.   : 1.0000    Max.   : 1.00000  
+##  tbodygyro_mean_y   tbodygyro_mean_z   tbodygyro_std_x   tbodygyro_std_y  
+##  Min.   :-1.00000   Min.   :-1.00000   Min.   :-1.0000   Min.   :-1.0000  
+##  1st Qu.:-0.10399   1st Qu.: 0.06485   1st Qu.:-0.9872   1st Qu.:-0.9819  
+##  Median :-0.07477   Median : 0.08626   Median :-0.9016   Median :-0.9106  
+##  Mean   :-0.07472   Mean   : 0.08836   Mean   :-0.7212   Mean   :-0.6827  
+##  3rd Qu.:-0.05110   3rd Qu.: 0.11044   3rd Qu.:-0.4822   3rd Qu.:-0.4461  
+##  Max.   : 1.00000   Max.   : 1.00000   Max.   : 1.0000   Max.   : 1.0000  
+##  tbodygyro_std_z   tbodygyrojerk_mean_x tbodygyrojerk_mean_y
+##  Min.   :-1.0000   Min.   :-1.00000     Min.   :-1.00000    
+##  1st Qu.:-0.9850   1st Qu.:-0.11723     1st Qu.:-0.05868    
+##  Median :-0.8819   Median :-0.09824     Median :-0.04056    
+##  Mean   :-0.6537   Mean   :-0.09671     Mean   :-0.04232    
+##  3rd Qu.:-0.3379   3rd Qu.:-0.07930     3rd Qu.:-0.02521    
+##  Max.   : 1.0000   Max.   : 1.00000     Max.   : 1.00000    
+##  tbodygyrojerk_mean_z tbodygyrojerk_std_x tbodygyrojerk_std_y
+##  Min.   :-1.00000     Min.   :-1.0000     Min.   :-1.0000    
+##  1st Qu.:-0.07936     1st Qu.:-0.9907     1st Qu.:-0.9922    
+##  Median :-0.05455     Median :-0.9348     Median :-0.9548    
+##  Mean   :-0.05483     Mean   :-0.7313     Mean   :-0.7861    
+##  3rd Qu.:-0.03168     3rd Qu.:-0.4865     3rd Qu.:-0.6268    
+##  Max.   : 1.00000     Max.   : 1.0000     Max.   : 1.0000    
+##  tbodygyrojerk_std_z tbodyaccmag_mean  tbodyaccmag_std  
+##  Min.   :-1.0000     Min.   :-1.0000   Min.   :-1.0000  
+##  1st Qu.:-0.9926     1st Qu.:-0.9819   1st Qu.:-0.9822  
+##  Median :-0.9503     Median :-0.8746   Median :-0.8437  
+##  Mean   :-0.7399     Mean   :-0.5482   Mean   :-0.5912  
+##  3rd Qu.:-0.5097     3rd Qu.:-0.1201   3rd Qu.:-0.2423  
+##  Max.   : 1.0000     Max.   : 1.0000   Max.   : 1.0000  
+##  tgravityaccmag_mean tgravityaccmag_std tbodyaccjerkmag_mean
+##  Min.   :-1.0000     Min.   :-1.0000    Min.   :-1.0000     
+##  1st Qu.:-0.9819     1st Qu.:-0.9822    1st Qu.:-0.9896     
+##  Median :-0.8746     Median :-0.8437    Median :-0.9481     
+##  Mean   :-0.5482     Mean   :-0.5912    Mean   :-0.6494     
+##  3rd Qu.:-0.1201     3rd Qu.:-0.2423    3rd Qu.:-0.2956     
+##  Max.   : 1.0000     Max.   : 1.0000    Max.   : 1.0000     
+##  tbodyaccjerkmag_std tbodygyromag_mean tbodygyromag_std 
+##  Min.   :-1.0000     Min.   :-1.0000   Min.   :-1.0000  
+##  1st Qu.:-0.9907     1st Qu.:-0.9781   1st Qu.:-0.9775  
+##  Median :-0.9288     Median :-0.8223   Median :-0.8259  
+##  Mean   :-0.6278     Mean   :-0.6052   Mean   :-0.6625  
+##  3rd Qu.:-0.2733     3rd Qu.:-0.2454   3rd Qu.:-0.3940  
+##  Max.   : 1.0000     Max.   : 1.0000   Max.   : 1.0000  
+##  tbodygyrojerkmag_mean tbodygyrojerkmag_std fbodyacc_mean_x  
+##  Min.   :-1.0000       Min.   :-1.0000      Min.   :-1.0000  
+##  1st Qu.:-0.9923       1st Qu.:-0.9922      1st Qu.:-0.9913  
+##  Median :-0.9559       Median :-0.9403      Median :-0.9456  
+##  Mean   :-0.7621       Mean   :-0.7780      Mean   :-0.6228  
+##  3rd Qu.:-0.5499       3rd Qu.:-0.6093      3rd Qu.:-0.2646  
+##  Max.   : 1.0000       Max.   : 1.0000      Max.   : 1.0000  
+##  fbodyacc_mean_y   fbodyacc_mean_z   fbodyacc_std_x    fbodyacc_std_y    
+##  Min.   :-1.0000   Min.   :-1.0000   Min.   :-1.0000   Min.   :-1.00000  
+##  1st Qu.:-0.9792   1st Qu.:-0.9832   1st Qu.:-0.9929   1st Qu.:-0.97689  
+##  Median :-0.8643   Median :-0.8954   Median :-0.9416   Median :-0.83261  
+##  Mean   :-0.5375   Mean   :-0.6650   Mean   :-0.6034   Mean   :-0.52842  
+##  3rd Qu.:-0.1032   3rd Qu.:-0.3662   3rd Qu.:-0.2493   3rd Qu.:-0.09216  
+##  Max.   : 1.0000   Max.   : 1.0000   Max.   : 1.0000   Max.   : 1.00000  
+##  fbodyacc_std_z    fbodyaccjerk_mean_x fbodyaccjerk_mean_y
+##  Min.   :-1.0000   Min.   :-1.0000     Min.   :-1.0000    
+##  1st Qu.:-0.9780   1st Qu.:-0.9912     1st Qu.:-0.9848    
+##  Median :-0.8398   Median :-0.9516     Median :-0.9257    
+##  Mean   :-0.6179   Mean   :-0.6567     Mean   :-0.6290    
+##  3rd Qu.:-0.3023   3rd Qu.:-0.3270     3rd Qu.:-0.2638    
+##  Max.   : 1.0000   Max.   : 1.0000     Max.   : 1.0000    
+##  fbodyaccjerk_mean_z fbodyaccjerk_std_x fbodyaccjerk_std_y
+##  Min.   :-1.0000     Min.   :-1.0000    Min.   :-1.0000   
+##  1st Qu.:-0.9873     1st Qu.:-0.9920    1st Qu.:-0.9865   
+##  Median :-0.9475     Median :-0.9562    Median :-0.9280   
+##  Mean   :-0.7436     Mean   :-0.6550    Mean   :-0.6122   
+##  3rd Qu.:-0.5133     3rd Qu.:-0.3203    3rd Qu.:-0.2361   
+##  Max.   : 1.0000     Max.   : 1.0000    Max.   : 1.0000   
+##  fbodyaccjerk_std_z fbodygyro_mean_x  fbodygyro_mean_y  fbodygyro_mean_z 
+##  Min.   :-1.0000    Min.   :-1.0000   Min.   :-1.0000   Min.   :-1.0000  
+##  1st Qu.:-0.9895    1st Qu.:-0.9853   1st Qu.:-0.9847   1st Qu.:-0.9851  
+##  Median :-0.9590    Median :-0.8917   Median :-0.9197   Median :-0.8877  
+##  Mean   :-0.7809    Mean   :-0.6721   Mean   :-0.7062   Mean   :-0.6442  
+##  3rd Qu.:-0.5903    3rd Qu.:-0.3837   3rd Qu.:-0.4735   3rd Qu.:-0.3225  
+##  Max.   : 1.0000    Max.   : 1.0000   Max.   : 1.0000   Max.   : 1.0000  
+##  fbodygyro_std_x   fbodygyro_std_y   fbodygyro_std_z   fbodyaccmag_mean 
+##  Min.   :-1.0000   Min.   :-1.0000   Min.   :-1.0000   Min.   :-1.0000  
+##  1st Qu.:-0.9881   1st Qu.:-0.9808   1st Qu.:-0.9862   1st Qu.:-0.9847  
+##  Median :-0.9053   Median :-0.9061   Median :-0.8915   Median :-0.8755  
+##  Mean   :-0.7386   Mean   :-0.6742   Mean   :-0.6904   Mean   :-0.5860  
+##  3rd Qu.:-0.5225   3rd Qu.:-0.4385   3rd Qu.:-0.4168   3rd Qu.:-0.2173  
+##  Max.   : 1.0000   Max.   : 1.0000   Max.   : 1.0000   Max.   : 1.0000  
+##  fbodyaccmag_std   fbodybodyaccjerkmag_mean fbodybodyaccjerkmag_std
+##  Min.   :-1.0000   Min.   :-1.0000          Min.   :-1.0000        
+##  1st Qu.:-0.9829   1st Qu.:-0.9898          1st Qu.:-0.9907        
+##  Median :-0.8547   Median :-0.9290          Median :-0.9255        
+##  Mean   :-0.6595   Mean   :-0.6208          Mean   :-0.6401        
+##  3rd Qu.:-0.3823   3rd Qu.:-0.2600          3rd Qu.:-0.3082        
+##  Max.   : 1.0000   Max.   : 1.0000          Max.   : 1.0000        
+##  fbodybodygyromag_mean fbodybodygyromag_std fbodybodygyrojerkmag_mean
+##  Min.   :-1.0000       Min.   :-1.0000      Min.   :-1.0000          
+##  1st Qu.:-0.9825       1st Qu.:-0.9781      1st Qu.:-0.9921          
+##  Median :-0.8756       Median :-0.8275      Median :-0.9453          
+##  Mean   :-0.6974       Mean   :-0.7000      Mean   :-0.7798          
+##  3rd Qu.:-0.4514       3rd Qu.:-0.4713      3rd Qu.:-0.6122          
+##  Max.   : 1.0000       Max.   : 1.0000      Max.   : 1.0000          
+##  fbodybodygyrojerkmag_std
+##  Min.   :-1.0000         
+##  1st Qu.:-0.9926         
+##  Median :-0.9382         
+##  Mean   :-0.7922         
+##  3rd Qu.:-0.6437         
+##  Max.   : 1.0000
+</code></pre>
+
+</body>
+
+</html>
